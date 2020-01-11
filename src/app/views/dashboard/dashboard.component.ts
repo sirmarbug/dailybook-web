@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private logger: NGXLogger
+  ) { }
 
   ngOnInit() {
+  }
+
+  goToHome(): void {
+    this.router.navigateByUrl('dashboard/home');
+  }
+
+  goToSettings(): void {
+    this.router.navigateByUrl('dashboard/settings');
+  }
+
+  logout(): void {
+    this.logger.debug('logout');
+    this.router.navigateByUrl('/');
   }
 
 }

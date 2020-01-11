@@ -21,8 +21,7 @@ const imports = [
   TranslateModule,
   MatToolbarModule,
   MatFormFieldModule,
-  MatInputModule,
-  
+  MatInputModule
 ];
 
 @NgModule({
