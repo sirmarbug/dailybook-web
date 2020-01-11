@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NGXLogger } from 'ngx-logger';
-import { AuthService } from './core/services';
+import { AuthService } from '@core/services';
 
 @Component({
   selector: 'app-root',
