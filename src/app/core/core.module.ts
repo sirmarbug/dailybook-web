@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 const declarations = [
 ];
 const imports = [
   CommonModule,
-  HttpClientModule
+  HttpClientModule,
+  LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
 ];
 
 @NgModule({

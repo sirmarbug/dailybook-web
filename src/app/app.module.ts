@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatCardModule} from '@angular/material/card';
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { CoreModule } from '@core/core.module';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -24,8 +24,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    MatCardModule,
+    CoreModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -33,7 +32,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient]
     }
     }),
-    LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
+    MatCardModule,
     MatGridListModule
   ],
   providers: [],
