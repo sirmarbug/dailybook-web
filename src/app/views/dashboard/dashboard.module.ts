@@ -4,11 +4,12 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { SettingsComponent } from './settings/settings.component';
+import { HomeComponent } from './home/home.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, AddNoteComponent, SettingsComponent],
+  declarations: [DashboardComponent, AddNoteComponent, SettingsComponent, HomeComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule
