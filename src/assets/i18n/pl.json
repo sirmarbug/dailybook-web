@@ -8,5 +8,9 @@
     "Password": "Hasło",
     "Repeat password": "Powtórz hasło",
     "First name": "Imię",
-    "Last name": "Nazwisko"
+    "Last name": "Nazwisko",
+    "Remove": "Usuń",
+    "Edit": "Edytuj",
+    "Read": "Czytaj",
+    "More": "Więcej"
 }
