@@ -1,1 +1,31 @@
-<p>add-note works!</p>
+<div class="row mt-4">
+  <div class="col-md-12">
+    <mat-card>
+      <form class="add-note-form">
+        <mat-form-field>
+          <input matInput [placeholder]="'Title' | translate">
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea matInput [placeholder]="'Note' | translate"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-chip-list">
+          <mat-chip-list #chipList aria-label="Tags">
+            <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+              (removed)="remove(tag)">
+              {{tag.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input [placeholder]="'Tags' | translate" [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </mat-form-field>
+
+        <button mat-raised-button class="btn-block" color="primary" (click)="onSaveClick()"><span
+            translate>Save</span></button>
+      </form>
+    </mat-card>
+  </div>
+</div>

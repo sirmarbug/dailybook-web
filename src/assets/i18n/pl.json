@@ -19,5 +19,8 @@
     "Repeat new password": "Powtórz nowe hasło",
     "Add": "Dodaj",
     "Settings": "Ustawienia",
-    "Logout": "Wyloguj"
+    "Logout": "Wyloguj",
+    "Title": "Tytuł",
+    "Note": "Notatka",
+    "Tags": "Tagi"
 }
