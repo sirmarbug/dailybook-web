@@ -1,2 +1,9 @@
-<p>settings works!</p>
-<router-outlet></router-outlet>
+<mat-card class="mt-4">
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive">
+      <span>{{ link.label }}</span>
+    </a>
+  </nav>
+  <router-outlet></router-outlet>
+</mat-card>

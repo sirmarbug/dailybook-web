@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs';
 
 const declarations = [
   ...fromComponents.components
@@ -21,7 +22,8 @@ const imports = [
   TranslateModule,
   MatToolbarModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTabsModule
 ];
 
 @NgModule({
