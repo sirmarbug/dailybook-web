@@ -1,4 +1,4 @@
-<div class="row mb-4">
+<div class="row mt-4">
   <div class="col-md-12">
     <mat-card>
       <mat-card-header>
@@ -16,6 +16,12 @@
           ab, earum fuga, optio magni nihil qui reiciendis ullam commodi quibusdam reprehenderit deleniti delectus,
           laudantium impedit vel harum asperiores laborum nemo ad sapiente atque. Neque, cum.
         </p>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip>One fish</mat-chip>
+          <mat-chip>Two fish</mat-chip>
+          <mat-chip color="primary" selected>Primary fish</mat-chip>
+          <mat-chip color="accent" selected>Accent fish</mat-chip>
+        </mat-chip-list>
       </mat-card-content>
       <mat-card-actions>
         <div class="row text-center">
@@ -24,9 +30,6 @@
           </div>
           <div class="col">
             <button mat-button translate><span translate>Edit</span></button>
-          </div>
-          <div class="col">
-            <button mat-button translate><span translate (click)="onReadClick()">Read</span></button>
           </div>
         </div>
       </mat-card-actions>

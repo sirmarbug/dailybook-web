@@ -6,11 +6,12 @@ import { AddNoteComponent } from './add-note/add-note.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '@shared/shared.module';
 import { PostComponent } from './home/post/post.component';
+import { ReadNoteComponent } from './read-note/read-note.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, AddNoteComponent, HomeComponent, PostComponent],
+  declarations: [DashboardComponent, AddNoteComponent, HomeComponent, PostComponent, ReadNoteComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

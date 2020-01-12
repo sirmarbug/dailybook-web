@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { HomeComponent } from './home/home.component';
+import { ReadNoteComponent } from './read-note/read-note.component';
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [{
     {
       path: 'add-note',
       component: AddNoteComponent
+    },
+    {
+      path: 'read-note',
+      component: ReadNoteComponent
     },
     {
       path: 'settings',
