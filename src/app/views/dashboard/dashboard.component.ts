@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goToSettings(): void {
-    this.router.navigateByUrl('dashboard/settings');
+    this.router.navigateByUrl('dashboard/settings/account');
   }
 
   logout(): void {

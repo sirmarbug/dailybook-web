@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { AddNoteComponent } from './add-note/add-note.component';
-import { SettingsComponent } from './settings/settings.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [{
@@ -19,7 +18,7 @@ const routes: Routes = [{
     },
     {
       path: 'settings',
-      component: SettingsComponent
+      loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
     }, {
       path: '',
       redirectTo: 'home',
