@@ -7,8 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-
-  title = 'angular-material-tab-router';
   navLinks: any[];
   activeLinkIndex = -1;
 

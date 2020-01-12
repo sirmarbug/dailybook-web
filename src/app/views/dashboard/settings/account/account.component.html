@@ -1,1 +1,12 @@
-<p>account works!</p>
+<div class="account-form mt-4">
+  <mat-form-field>
+    <input matInput type="text" [placeholder]="'Address E-mail' | translate">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" [placeholder]="'First name' | translate">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" [placeholder]="'Last name' | translate">
+  </mat-form-field>
+  <button mat-raised-button class="btn-block" color="primary" (click)="onSignInClick()"><span translate>Save</span></button>
+</div>
