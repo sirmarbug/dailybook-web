@@ -21,6 +21,10 @@ export class DashboardComponent implements OnInit {
     this.router.navigateByUrl('dashboard/home');
   }
 
+  goToAddNote(): void {
+    this.router.navigateByUrl('dashboard/add-note');
+  }
+
   goToSettings(): void {
     this.router.navigateByUrl('dashboard/settings/account');
   }

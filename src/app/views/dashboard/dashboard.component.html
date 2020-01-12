@@ -5,8 +5,9 @@
         <img class="img-fluid navbar-brand-img" src="/assets/img/dailybook.png" alt="dailybook" (click)="goToHome()">
       </div>
       <div class="navbar-right">
-        <button mat-button (click)="goToSettings()">Ustawienia</button>
-        <button mat-button (click)="logout()">Wyloguj</button>
+        <button mat-button (click)="goToAddNote()"><span translate>Add</span></button>
+        <button mat-button (click)="goToSettings()"><span translate>Settings</span></button>
+        <button mat-button (click)="logout()"><span translate>Logout</span></button>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
