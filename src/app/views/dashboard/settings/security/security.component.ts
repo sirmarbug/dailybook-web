@@ -12,4 +12,7 @@ export class SecurityComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSaveClick(): void {
+  }
+
 }

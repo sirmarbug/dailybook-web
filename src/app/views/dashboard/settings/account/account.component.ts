@@ -12,4 +12,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSaveClick(): void {
+  }
+
 }

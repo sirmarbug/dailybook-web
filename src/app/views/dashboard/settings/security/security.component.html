@@ -1,1 +1,13 @@
-<p>security works!</p>
+<div class="account-form mt-4">
+  <mat-form-field>
+    <input matInput type="text" [placeholder]="'Current password' | translate">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" [placeholder]="'New password' | translate">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" [placeholder]="'Repeat new password' | translate">
+  </mat-form-field>
+  <button mat-raised-button class="btn-block" color="primary" (click)="onSaveClick()"><span
+      translate>Save</span></button>
+</div>
