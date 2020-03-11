@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as fromComponents from './components';
 import * as fromModals from './modals';
 import { MatCardModule } from '@angular/material/card';
@@ -22,6 +22,7 @@ const declarations = [
 const imports = [
   CommonModule,
   FormsModule,
+  ReactiveFormsModule,
   MatCardModule,
   MatButtonModule,
   TranslateModule,

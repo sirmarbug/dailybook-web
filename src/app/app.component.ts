@@ -19,6 +19,5 @@ export class AppComponent {
     translate.setDefaultLang('pl');
     translate.use('pl');
     this.logger.debug('Your log message goes here');
-    this.logger.debug('authService', this.authService.user);
   }
 }
