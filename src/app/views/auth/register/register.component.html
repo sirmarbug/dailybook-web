@@ -9,18 +9,25 @@
 
       <mat-form-field>
         <input matInput required [placeholder]="'Last name'  | translate" formControlName="lastName">
+        <mat-error *ngIf="hasError('lastName', 'required')">Last name is required</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput [placeholder]="'Address E-mail' | translate" formControlName="mail">
+        <mat-error *ngIf="hasError('mail', 'required')">E-mail is required</mat-error>
+        <mat-error *ngIf="hasError('mail', 'email')">To nie jest mail</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput type="password" [placeholder]="'Password' | translate" formControlName="password">
+        <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+        <mat-error *ngIf="hasError('password', 'minlength')">Min 8 chars</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput type="password" [placeholder]="'Repeat password' | translate" formControlName="repeatPassword">
+        <mat-error *ngIf="hasError('repeatPassword', 'required')">Password is required</mat-error>
+        <mat-error *ngIf="hasError('repeatPassword', 'minlength')">Min 8 chars</mat-error>
       </mat-form-field>
 
     </mat-card-content>

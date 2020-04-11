@@ -17,15 +17,16 @@ export class RegisterComponent implements OnInit {
     private logger: NGXLogger,
     private router: Router,
     private authService: AuthService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      mail: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      repeatPassword: new FormControl('', [Validators.required])
+    this.registerForm = this.fb.group({
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      mail: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
+      repeatPassword: [null, [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -39,11 +40,11 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.logger.debug('valid');
-    this.authService.registerWithEmail('', '')
-      .subscribe((res: auth.UserCredential) => {
-        this.logger.debug(res);
-      },
-      err => this.logger.debug('error:', err));
+    // this.authService.registerWithEmail(this.registerForm.controls['mail'].value, this.registerForm.controls['password'].value)
+    //   .subscribe((res: auth.UserCredential) => {
+    //     this.logger.debug(res);
+    //   },
+    //   err => this.logger.debug('error:', err));
   }
 
 }
