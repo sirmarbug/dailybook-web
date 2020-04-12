@@ -25,5 +25,12 @@
     "Tags": "Tagi",
     "Confirm": "Potwierdź",
     "Are you sure you want to perform the operation?": "Czy na pewno chcesz wykonać operację?",
-    "Cancel": "Anuluj"
+    "Cancel": "Anuluj",
+    "First name is required": "Imię jest wymagane",
+    "Last name is required": "Nazwisko jest wymagene",
+    "Address E-mail is required": "Adres E-mail jest wymagany",
+    "This is not an email address": "To nie jest adres E-mail",
+    "Password is required": "Hasło jest wymagane",
+    "The password must contain a minimum of 8 characters": "Hasło musi się składać minimum z 8 znaków",
+    "Repeat password is required": "Powtórzenie hasła jest wymagane"
 }
