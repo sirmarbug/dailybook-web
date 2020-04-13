@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { Router } from '@angular/router';
-import { AuthService } from '@core/services';
+import { SessionService } from '@core/services';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { UserService } from '@core/services/user.service';
 import { auth } from 'firebase';
-import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private logger: NGXLogger,
     private router: Router,
-    private authService: AuthService,
-    private fb: FormBuilder
+    private sessionService: SessionService,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit() {
@@ -40,11 +41,12 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.logger.debug('valid');
-    // this.authService.registerWithEmail(this.registerForm.controls['mail'].value, this.registerForm.controls['password'].value)
-    //   .subscribe((res: auth.UserCredential) => {
-    //     this.logger.debug(res);
-    //   },
-    //   err => this.logger.debug('error:', err));
+    // tslint:disable-next-line:no-string-literal
+    this.sessionService.registerWithEmail(this.registerForm.controls['mail'].value, this.registerForm.controls['password'].value)
+      .subscribe((res: auth.UserCredential) => {
+        this.logger.debug(res);
+      },
+      err => this.logger.debug('error:', err));
   }
 
 }
