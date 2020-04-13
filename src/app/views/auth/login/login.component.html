@@ -2,11 +2,11 @@
   <h2 class="header" translate>Sign in</h2>
   <mat-card-content>
     <mat-form-field>
-      <input matInput [placeholder]="'Address E-mail' | translate">
+      <input matInput [placeholder]="'Address E-mail' | translate" [(ngModel)]="mail">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="password" [placeholder]="'Password' | translate">
+      <input matInput type="password" [placeholder]="'Password' | translate" [(ngModel)]="password">
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>
