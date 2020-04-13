@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable, from, of } from 'rxjs';
+import { Observable, from, of, forkJoin } from 'rxjs';
 import { auth, UserInfo } from 'firebase';
 import { NGXLogger } from 'ngx-logger';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { tap, switchMap } from 'rxjs/operators';
 import { User } from '@core/models/user';
 import { Journal } from '@core/models/journal';
+import { Post } from '@core/models/post';
 
 @Injectable({
   providedIn: 'root'
@@ -49,8 +50,16 @@ export class SessionService {
   }
 
   private initialUser(user: any): any {
-    this.createUser(user).subscribe(() => {});
-    this.createDefaultJournal(user.id).subscribe(() => {});
+    const createUser = this.createUser(user);
+    const createDefaultJournal = this.createDefaultJournal(user.id);
+    forkJoin([createUser, createDefaultJournal]).pipe(
+      tap(_ => {
+        console.log('tap', _);
+        this.createDefaultPost(user.id, _[1]);
+      })
+    ).subscribe(res => {
+      console.log('sub forkJoin', res);
+    });
   }
 
   private createUser(user: any): Observable<any> {
@@ -65,6 +74,18 @@ export class SessionService {
       switchMap(_ => {
         _.update('id', _.id);
         console.log('createDefaultJournal', _);
+        return of(_.id);
+      })
+    );
+  }
+
+  private createDefaultPost(userId: string, journalId: string): Observable<any> {
+    const postDocument = this.db.collection(`posts`).doc(userId).collection('journals').doc(journalId).collection('items');
+    const defaultPost = new Post('0', 'Przykładowy post', 'To jest jakiś przykładowy post', ['post', 'today'], userId, journalId);
+    return from(postDocument.add({...defaultPost})).pipe(
+      switchMap(_ => {
+        _.update('id', _.id);
+        console.log('createDefaultPost', _);
         return of(_.id);
       })
     );
