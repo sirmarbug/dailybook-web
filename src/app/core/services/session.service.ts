@@ -4,8 +4,9 @@ import { Observable, from, of } from 'rxjs';
 import { auth, UserInfo } from 'firebase';
 import { NGXLogger } from 'ngx-logger';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { switchMap, map } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 import { User } from '@core/models/user';
+import { Journal } from '@core/models/journal';
 
 @Injectable({
   providedIn: 'root'
@@ -49,17 +50,29 @@ export class SessionService {
 
   private initialUser(user: any): any {
     this.createUser(user).subscribe(() => {});
+    this.createDefaultJournal(user.id).subscribe(() => {});
   }
 
-  private createUser(user: any): Observable<void> {
+  private createUser(user: any): Observable<any> {
     const userDocument = this.db.collection('users').doc(user.id);
     return from(userDocument.set({ ...user }));
   }
 
+  private createDefaultJournal(userId: string): Observable<any> {
+    const journalDocument = this.db.collection(`journals`).doc(userId).collection('items');
+    const defaultJournal = new Journal();
+    return from(journalDocument.add({...defaultJournal})).pipe(
+      switchMap(_ => {
+        _.update('id', _.id);
+        console.log('createDefaultJournal', _);
+        return of(_.id);
+      })
+    );
+  }
+
   registerWithEmail(mail: string, password: string, firstName: string, lastName: string): Observable<any> {
-    const register = from(this.afAuth.auth.createUserWithEmailAndPassword(mail, password));
-    return register.pipe(
-      map(_ => {
+    return from(this.afAuth.auth.createUserWithEmailAndPassword(mail, password)).pipe(
+      tap(_ => {
         const newUser = new User(
           _.user.uid,
           firstName,
