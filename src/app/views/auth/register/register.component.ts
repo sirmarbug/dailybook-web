@@ -46,20 +46,13 @@ export class RegisterComponent implements OnInit {
     }
     this.logger.debug('valid');
     // tslint:disable-next-line:no-string-literal
-    this.sessionService.registerWithEmail(this.registerForm.controls['mail'].value, this.registerForm.controls['password'].value)
-      .pipe(
-        switchMap(_ => {
-          // tslint:disable-next-line:no-string-literal
-          const newUser = new User(_.user.uid, this.registerForm.controls['firstName'].value,
-          this.registerForm.controls['lastName'].value, this.registerForm.controls['mail'].value);
-          this.userService.createUser(newUser).subscribe(res => {
-            console.log(res);
-          });
-          return of(_);
-        })
-      )
-      .subscribe((userCredential: auth.UserCredential) => {
-        console.log(userCredential);
+    this.sessionService.registerWithEmail(
+      this.registerForm.controls['mail'].value,
+      this.registerForm.controls['password'].value,
+      this.registerForm.controls['firstName'].value,
+      this.registerForm.controls['lastName'].value
+      ).subscribe((userCredential: auth.UserCredential) => {
+        console.log('registerWithEmail', userCredential);
       },
       err => this.logger.debug('error:', err));
   }
