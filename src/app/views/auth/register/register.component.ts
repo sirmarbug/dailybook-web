@@ -3,8 +3,11 @@ import { NGXLogger } from 'ngx-logger';
 import { Router } from '@angular/router';
 import { SessionService } from '@core/services';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { UserService } from '@core/services/user.service';
 import { auth } from 'firebase';
+import { UserService } from '@core/services/user.service';
+import { User } from '@core/models/user';
+import { switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +21,7 @@ export class RegisterComponent implements OnInit {
     private logger: NGXLogger,
     private router: Router,
     private sessionService: SessionService,
+    private userService: UserService,
     private fb: FormBuilder,
   ) { }
 
@@ -43,8 +47,19 @@ export class RegisterComponent implements OnInit {
     this.logger.debug('valid');
     // tslint:disable-next-line:no-string-literal
     this.sessionService.registerWithEmail(this.registerForm.controls['mail'].value, this.registerForm.controls['password'].value)
-      .subscribe((res: auth.UserCredential) => {
-        this.logger.debug(res);
+      .pipe(
+        switchMap(_ => {
+          // tslint:disable-next-line:no-string-literal
+          const newUser = new User(_.user.uid, this.registerForm.controls['firstName'].value,
+          this.registerForm.controls['lastName'].value, this.registerForm.controls['mail'].value);
+          this.userService.createUser(newUser).subscribe(res => {
+            console.log(res);
+          });
+          return of(_);
+        })
+      )
+      .subscribe((userCredential: auth.UserCredential) => {
+        console.log(userCredential);
       },
       err => this.logger.debug('error:', err));
   }

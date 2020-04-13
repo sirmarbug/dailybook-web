@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     // this.sessionService.loginWithEmail(this.mail, this.password)
     //   .subscribe((res: auth.UserCredential) => {
     //     this.logger.debug(res);
-    //     // this.router.navigateByUrl('/dashboard/home');
+    //     this.router.navigateByUrl('/dashboard/home');
     //   });
   }
 

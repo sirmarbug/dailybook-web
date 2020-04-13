@@ -5,6 +5,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { environment } from '@env';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 const declarations = [
 ];
@@ -13,7 +14,8 @@ const imports = [
   HttpClientModule,
   LoggerModule.forRoot({serverLoggingUrl: '/api/logs', level: NgxLoggerLevel.DEBUG, serverLogLevel: NgxLoggerLevel.OFF}),
   AngularFireModule.initializeApp(environment.firebaseConfig),
-  AngularFireAuthModule
+  AngularFireAuthModule,
+  AngularFirestoreModule,
 ];
 
 @NgModule({
